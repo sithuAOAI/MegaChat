@@ -1,6 +1,6 @@
-# LLM-Based Power Virtual Agent and Power Automate Chatbot
+# MegaChat
 
-This project leverages the power of OpenAI's GPT models using Langchain to provide a robust chatbot for Power Virtual Agent and Power Automate platforms. Our solution enriches backend operations with advanced NLP capabilities to process user input effectively and generate meaningful responses.
+This project leverages the power of OpenAI's GPT models using Langchain to provide a robust chatbot for Microsoft Copilot studio and Power Automate platforms. Our solution enriches backend operations with advanced NLP capabilities to process user input effectively and generate meaningful responses.
 
 ## Features
 
