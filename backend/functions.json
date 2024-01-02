@@ -1,0 +1,429 @@
+[
+    { 
+        "name": "create_booking",
+        "description": "Creates a new booking with the given room and time details.If any of them missing, ask politely back to the user while remembering the previous values",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "booking_subject": {
+                    "type": "string",
+                    "description": "The subject of the booking"
+                },
+                "room_id": {
+                    "type": "string",
+                    "description": "The name of the room to be booked"
+                },
+                "applicant_name": {
+                    "type": "string",
+                    "description": "The name of the applicant"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking, if the date is not given, the current date will be used"
+                },
+                "start_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The starting time of the booking"
+                },
+                "end_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The ending time of the booking"
+                },
+                "duration": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The duration of the booking"
+                },
+                "attendees": {
+                    "type": "integer",
+                    "description": "The number of attendees for the booking"
+                }
+            },
+            "required": ["booking_subject", "room_id", "applicant_name", "date", "start_time", "end_time", "duration", "attendees"]
+        }
+    },
+    {
+        "name": "recommend_by_meeting_name",
+        "description": "Recommends the information of the meeting booking including the time and the number of participants with a meeting room based on the history of meeting names associated with the user's past bookings.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "meeting_name": {
+                    "type": "string",
+                    "description": "The name or the subject of the meeting to reference and based on the history of the given meeting subject for recommending the meeting room."
+                }
+            },
+            "required": ["meeting_name"]
+        }
+    },   
+    {
+        "name": "bing_search",
+        "description": "Searches Bing for the given query and returns the top 5 results.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+            }
+        }
+    },
+    {
+        "name": "generate_image",
+        "description": "Generate image based on the given text from the user and return the image back to the user using Dall-E.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+            }
+        }
+    },
+ 
+    {
+        "name": "read_booking",
+        "description": "Retrieves details of a booking based on the booking ID.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "booking_id": {
+                    "type": "number",
+                    "description": "The ID of the booking to be retrieved"
+                }
+            },
+            "required": ["booking_id"]
+        }
+    },
+    {
+        "name": "find_booking_by_time",
+        "description": "Retrieves details of a booking based on the date and start time of the booking and tell the data of that data back to the user.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking"
+                },
+                "start_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The starting time of the booking"
+                }
+            },
+            "required": ["date", "start_time"]
+        }
+    },
+    {
+        "name": "find_booking_by_date",
+        "description": "Retrieves details of a booking based on the date only and tell the data of that data back to the user.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking"
+                }
+            },
+            "required": ["date"]
+        }
+    },
+    {
+        "name": "find_booking_by_applicant_name_and_date",
+        "description": "Retrieves details of a booking based on the applicant name 양동준 only together with the date and tell the data of that data back to the user.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "applicant_name": {
+                    "type": "string",
+                    "description": "The name of the applicant"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking"
+                }
+
+            },
+            "required": ["applicant_name","date"]
+        }
+    },
+    {
+        "name": "find_booking_by_applicant_name",
+        "description": "Retrieves details of a booking based on the applicant name 양동준 only and tell the data of that meeting back to the user.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "applicant_name": {
+                    "type": "string",
+                    "description": "The name of the applicant"
+                }
+            },
+            "required": ["applicant_name"]
+        }
+    },
+    {
+        "name": "read_all_bookings",
+        "description": "Retrieves all bookings.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+
+            }
+        }
+    },
+    {
+        "name": "available_rooms",
+        "description": "Retrieves the available rooms for a given date and time and number of attendees. If any of them missing, ask politely back to the user while remembering the previous values",
+        "parameters":{
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking"
+                },
+                "start_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The starting time of the booking"
+                },
+                "end_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The ending time of the booking"
+                },
+                "attendees": {
+                    "type": "integer",
+                    "description": "The updated number of attendees for the booking"
+                }
+            },
+            "required": ["date", "start_time", "end_time", "attendees"]
+
+        }
+    },
+    {
+        "name": "get_all_meeting_rooms",
+        "description": "Retrieves data of all meeting rooms.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+
+            }
+        }
+    },
+    {
+        "name": "get_location_of_room",
+        "description": "Retrieves the location data with all details of the given meeting room.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "room_name":{
+                    "type": "string",
+                    "description": "The name of the room to be retrieved"
+                }
+            },
+            "required": ["room_name"]
+        }
+    },
+    {
+        "name": "update_booking",
+        "description": "Updates the details of an existing booking based on the title of the meetind the date of the meeting.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "booking_subject": {
+                    "type": "string",
+                    "description": "The original subject of the booking to be searched for update from the database"
+                },
+                "new_booking_subject":{
+                    "type": "string",
+                    "description": "The new subject of the booking to be updated"
+                },
+                "room_id": {
+                    "type": "string",
+                    "description": "The name of the room to be updated"
+                },
+                "applicant_name": {
+                    "type": "string",
+                    "description": "The name of the applicant to be updated"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking to be searched to update, if the date is not given, the current date will be used to update"
+                },
+                "new_booking_date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The new date of the booking to be updated"
+                },
+                "start_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The starting time of the booking to be updated"
+                },
+                "end_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The ending time of the booking to be updated"
+                },
+                "duration": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The duration of the booking to be updated"
+                },
+                "attendees": {
+                    "type": "integer",
+                    "description": "The number of attendees for the booking to be updated"
+                }
+            
+            },
+            "required": ["new_booking_subject","room_id","applicant_name","date","new_booking_date","start_time","end_time","duration","attendees"]
+        }
+    },
+
+    {
+        "name": "delete_booking_based_on_title_and_time",
+        "description": "Deletes the booking based on the title and time of the booking.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "booking_subject": {
+                    "type": "string",
+                    "description": "The subject of the booking"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking"
+                },
+                "start_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The starting time of the booking"
+                }
+            }
+        }
+    },
+    {
+        "name": "delete_booking_based_on_date_and_time",
+        "description": "Deletes the booking based on the date and start time of the booking.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the booking"
+                },
+                "start_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The starting time of the booking"
+                }
+            }
+        }
+    },
+    {
+        "name": "get_coffee_menu",
+        "description": "Retrieves the coffee menu and always answer only the menus with cold drinks.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                
+            }
+        }
+    },
+    {
+        "name": "get_coffee_orders",
+        "description": "Retrieves all the coffee orders.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                
+            }
+        }
+    },
+    {
+        "name": "order_coffee",
+        "description": "Places a coffee order for a specified meeting and specified meeting room applicant. If any of the required values are missing, ask politely back to the user while remembering the previous values",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "customer_name": {
+                    "type": "string",
+                    "description": "The name of the customer placing the order"
+                },
+                "coffee_type": {
+                    "type": "string",
+                    "description": "The type of coffee to order"
+                },
+                "num_coffees": {
+                    "type": "integer",
+                    "description": "The number of coffees to order"
+                },
+                "order_date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the coffee order in YYYY-MM-DD format"
+                },
+                "order_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The time of the coffee order in HH:MM format"
+                },
+                "expected_time": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "The expected time of delivery in HH:MM format"
+                },
+                "pickup_status": {
+                    "type": "string",
+                    "description": "The pickup status of the coffee order"
+                }
+            },
+            "required": ["customer_name", "coffee_type", "num_coffees", "order_date", "order_time", "expected_time", "pickup_status"]
+        }
+    },
+    
+     
+    
+    {
+        "name": "get_current_time",
+        "description": "Get the current time in a given location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The location name. The pytz is used to get the timezone for that location. Location names should be in a format like America/New_York, Asia/Bangkok, Europe/London"
+                }
+            }
+
+        }
+    },
+    {
+        "name": "reset_chathistory",
+        "description": "Resets the chat history and restarts the conversation",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                }
+            }
+
+        },
+
+    {
+        "name": "calculator",
+        "description": "A simple calculator used to perform basic arithmetic operations",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "num1": {"type": "number"},
+                "num2": {"type": "number"},
+                "operator": {"type": "string", "enum": ["+", "-", "*", "/", "**", "sqrt"]}
+            },
+            "required": ["num1", "num2", "operator"]
+        }
+    }
+]
